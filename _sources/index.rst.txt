@@ -1,0 +1,205 @@
+.. R_Type_docs documentation master file, created by
+   sphinx-quickstart on Sun Feb  5 16:31:57 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to R_Type_docs's documentation!
+=======================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+RTYPE
+======
+
+Description
+-----------
+
+The goal of the project is to implement a multithreaded server with a graphical client to play the game “R-Type”. To do this we have to build our own game engine.
+
+
+Build
+-----
+
+This project was built using the game engine: `My ecs <https://github.com/chetrit/my_ecs>`_.
+
+Build for Linux and MacOs
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To build:
+
+.. code-block:: bash
+
+    ./build_unix.sh
+
+To clean and rebuild from scratch:
+
+.. code-block:: bash
+
+    ./build_unix.sh re
+
+To clean the repo:
+
+.. code-block:: bash
+
+    ./build_unix.sh clean
+
+Build for Windows
+^^^^^^^^^^^^^^^^^
+
+To build:
+
+.. code-block:: bash
+
+    ./build_windows.bat
+
+To clean and rebuild from scratch:
+
+.. code-block:: bash
+
+    ./build_windows.bat re
+
+To clean the repo:
+
+.. code-block:: bash
+
+    ./build_windows.bat clean
+
+Installation
+------------
+
+Clone the repository, then run the following commands:
+
+.. code-block:: bash
+
+    cmake .
+    cmake --build
+    ./r-type
+
+Usage
+-----
+
+Documentation
+-------------
+
+You can find all the documentation in the file "doc":
+
+.. code-block:: bash
+
+    cd doc
+
+See `PROTOCOL.md <./doc/PROTOCOL.md>`_ for the network communication protocol.
+
+See `ECS-scheme.png <doc/ECS%20-%20scheme.png>`_ for the schema of the ecs.
+
+Features
+--------
+
+See `CHANGELOG.md <./CHANGELOG.md>`_ for a complete details of features and versions.
+
+Authors
+-------
+
+- Alexandre Chetrit <https://github.com/chetrit>
+- Théo de Boysson <https://github.com/BoyssonFresh>
+- Julien Letoux <https://github.com/lockhead>
+- Ines Maaroufi <https://github.com/Happinesseuh>
+
+
+Protocol Documentation: R-Type Interactions Between Server and Client
+=============================================================
+
+Protocol
+--------
+- ``DA BE BE EF (int32_t)``: Magic number for responses
+- ``02 (uint16_t)``: Size (size of message after this byte)
+- ``01 (uint8_t)``: Code
+- ``05 ARRAY OF ARGS (uint8_t*)``: RESPONSES
+
+Client Command
+--------------
+- ``01 (uint8_t)``: PLAYER MOVE
+- ``02 (uint8_t)``: PLAYER SHOOT
+- ``03 (uint8_t)``: PLAYER QUIT
+- ``04 (uint8_t)``: STATUS OK
+- ``05 (uint8_t)``: CLIENT CONNECTED
+
+Player Move
+~~~~~~~~~~
+- ``01 (uint8_t)``: UP
+- ``02 (uint8_t)``: DOWN
+- ``03 (uint8_t)``: LEFT
+- ``04 (uint8_t)``: RIGHT
+
+Player Shoot
+~~~~~~~~~~~
+- ``00 00(uint8_t)``: PLAYER POSITION
+
+Client Command Examples
+~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    DA BE BE EF 00 02 01 01 : PLAYER MOVE UP
+    DA BE BE EF 00 02 01 03 : PLAYER MOVE LEFT
+    DA BE BE EF 00 01 02 : PLAYER SHOOT
+    DA BE BE EF 00 01 03 : PLAYER QUIT
+
+Server Command
+--------------
+- ``01 (uint8_t)``: PLAYER POSITION
+- ``02 (uint8_t)``: ENEMIE POSITION
+- ``03 (uint8_t)``: PLAYER DECO
+- ``04 (uint8_t)``: PLAYER CRASH
+- ``05 (uint8_t)``: PLAYER DEAD
+- ``06 (uint8_t)``: ENEMIE DEAD
+
+Player Position
+~~~~~~~~~~~~~~
+- ``00 00 00(uint8_t)``: POSITION / PLAYER ID
+
+Enemie Position
+~~~~~~~~~~~~~~
+- ``00 00 00(uint8_t)``: POSITION / ENEMIE ID
+
+Player Deco
+~~~~~~~~~~~
+- ``00 (uint8_t)``: PLAYER ID
+
+Player Crash
+~~~~~~~~~~~
+- ``00 (uint8_t)``: PLAYER ID
+
+Player Dead
+~~~~~~~~~~
+- ``00 (uint8_t)``: PLAYER ID
+
+Enemie Dead
+~~~~~~~~~~
+- ``00 (uint8_t)``: ENEMIE ID
+
+Server Command Examples
+~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    DA BE BE EF 04 01 05 08 07 : PLAYER '05' MOVE TO (08, 07)
+    DA BE BE EF 04 01 03 16 01 : PLAYER '03' MOVE TO (16, 01)
+    DA BE BE EF 02 04 01 : PLAYER '01' CRASH
+    DA BE BE EF 02 06 13 : ENEMIE '13' DEAD
+
+Requests
+--------
+Full Example:
+
+::
+
+    \xDA\xBE\xBE\xEF\x0\x3GUI\xDA\xBE\xBE\xEF\x3\x2\x1\
