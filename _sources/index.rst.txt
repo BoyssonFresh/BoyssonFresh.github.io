@@ -203,3 +203,116 @@ Full Example:
 ::
 
     \xDA\xBE\xBE\xEF\x0\x3GUI\xDA\xBE\xBE\xEF\x3\x2\x1\
+
+ECS Documentation
+==================
+
+.. code-block:: none
+
+   Entity component system (ECS) is a software architectural pattern mostly used in video game development for the representation of game world objects. An ECS comprises entities composed from components of data, with systems which operate on entities' components.
+
+   ECS follows the principle of composition over inheritance, meaning that every entity is defined not by a type hierarchy, but by the components that are associated with it. Systems act globally over all entities which have the required components.
+
+.. image:: ECS%20-%20scheme.png
+
+Components
+----------
+
+Clock
+~~~~~
+
+.. code-block:: none
+
+   To add a clock in your game.
+   You can give as parameter an interval to the clock.
+
+Collider
+~~~~~~~~
+
+.. code-block:: none
+
+   To add a colider in your game.
+   You can give as parameter a width and an height.
+
+Controllable
+~~~~~~~~~~~~
+
+.. code-block:: none
+
+   To add all the controlable of your game.
+   Like Up, Down, Left, Right ...
+
+Human
+~~~~~
+
+.. code-block:: none
+
+   To add a player to your game.
+   You need to give an id as parameter.
+
+Identifiable
+~~~~~~~~~~~~
+
+.. code-block:: none
+
+   To identifie an entity.
+   You need to give an id as parameter.
+
+Limited
+~~~~~~~
+
+.. code-block:: none
+
+   To give the limite of your map in your game.
+   You need to gove the top left corner position and the width and the height of the limit as parmeter.
+
+Position
+~~~~~~~~
+
+.. code-block:: none
+
+   To set a position of an entity.
+   You need to give a Vector as parameter.
+
+Sprite
+~~~~~~
+
+.. code-block:: none
+
+   To create a sprite in your game.
+   You can give a color to it.
+   The default color is white.
+
+Velocity
+~~~~~~~~
+
+.. code-block:: none
+
+   To give a velocity to an entity of your game.
+   You need to give a vector as parameter.
+
+
+Network Operation
+=================
+
+UDP
+---
+
+.. code-block:: none
+
+   In computer networking, the User Datagram Protocol (UDP) is one of the core communication protocols of the Internet protocol suite used to send messages (transported as datagrams in packets) to other hosts on an Internet Protocol (IP) network. Within an IP network, UDP does not require prior communication to set up communication channels or data paths.
+
+.. code-block:: none
+
+   We are using udp for all the communication between the server and the client for the game.
+
+TCP
+---
+
+.. code-block:: none
+
+   The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network. Major internet applications such as the World Wide Web, email, remote administration, and file transfer rely on TCP, which is part of the Transport Layer of the TCP/IP suite. SSL/TLS often runs on top of TCP.
+
+.. code-block:: none
+
+   We are only using tcp for the connection.
