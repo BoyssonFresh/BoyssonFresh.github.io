@@ -62,6 +62,15 @@
 <li><a class="reference internal" href="#requests">Requests</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#ecs-documentation">ECS Documentation</a><ul>
+<li><a class="reference internal" href="#components">Components</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#network-operation">Network Operation</a><ul>
+<li><a class="reference internal" href="#udp">UDP</a></li>
+<li><a class="reference internal" href="#tcp">TCP</a></li>
+</ul>
+</li>
 </ul>
 </div>
         </div>
@@ -251,6 +260,76 @@ cmake --build
 <h2>Requests<a class="headerlink" href="#requests" title="Permalink to this heading"></a></h2>
 <p>Full Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">xDA</span>\<span class="n">xBE</span>\<span class="n">xBE</span>\<span class="n">xEF</span>\<span class="n">x0</span>\<span class="n">x3GUI</span>\<span class="n">xDA</span>\<span class="n">xBE</span>\<span class="n">xBE</span>\<span class="n">xEF</span>\<span class="n">x3</span>\<span class="n">x2</span>\<span class="n">x1</span>\
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ecs-documentation">
+<h1>ECS Documentation<a class="headerlink" href="#ecs-documentation" title="Permalink to this heading"></a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Entity component system (ECS) is a software architectural pattern mostly used in video game development for the representation of game world objects. An ECS comprises entities composed from components of data, with systems which operate on entities&#39; components.
+
+ECS follows the principle of composition over inheritance, meaning that every entity is defined not by a type hierarchy, but by the components that are associated with it. Systems act globally over all entities which have the required components.
+</pre></div>
+</div>
+<img alt="ECS%20-%20scheme.png" src="ECS%20-%20scheme.png" />
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To add a clock in your game.
+You can give as parameter an interval to the clock.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To add a colider in your game.
+You can give as parameter a width and an height.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To add all the controlable of your game.
+Like Up, Down, Left, Right ...
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To add a player to your game.
+You need to give an id as parameter.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To identifie an entity.
+You need to give an id as parameter.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To give the limite of your map in your game.
+You need to gove the top left corner position and the width and the height of the limit as parmeter.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To set a position of an entity.
+You need to give a Vector as parameter.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To create a sprite in your game.
+You can give a color to it.
+The default color is white.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To give a velocity to an entity of your game.
+You need to give a vector as parameter.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="network-operation">
+<h1>Network Operation<a class="headerlink" href="#network-operation" title="Permalink to this heading"></a></h1>
+<section id="udp">
+<h2>UDP<a class="headerlink" href="#udp" title="Permalink to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In computer networking, the User Datagram Protocol (UDP) is one of the core communication protocols of the Internet protocol suite used to send messages (transported as datagrams in packets) to other hosts on an Internet Protocol (IP) network. Within an IP network, UDP does not require prior communication to set up communication channels or data paths.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We are using udp for all the communication between the server and the client for the game.
+</pre></div>
+</div>
+</section>
+<section id="tcp">
+<h2>TCP<a class="headerlink" href="#tcp" title="Permalink to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network. Major internet applications such as the World Wide Web, email, remote administration, and file transfer rely on TCP, which is part of the Transport Layer of the TCP/IP suite. SSL/TLS often runs on top of TCP.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>We are only using tcp for the connection.
 </pre></div>
 </div>
 </section>
